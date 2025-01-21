@@ -199,9 +199,9 @@ const SyncModeFlags = {
 
 const ReleaseModeFlags = {
   [ReleaseMode.Release]: [
-    `-Oz`,
-    `-flto`,
-    `--closure 1`,
+    `-O3`,// `-Oz`,
+    // `-flto`,
+    // `--closure 1`,
     `-s FILESYSTEM=0`,
     `--pre-js $(TEMPLATES)/pre-extension.js`,
     `--pre-js $(TEMPLATES)/pre-wasmMemory.js`,
@@ -246,6 +246,16 @@ function getCflags(targetName: string, variant: BuildVariant) {
           // # Need to use -O3 - otherwise ASYNCIFY leads to stack overflows (why?)
           "-O3",
         )
+        break
+    }
+  }
+  else {  // ReleaseMode.Release
+    switch (variant.syncMode) {
+      case SyncMode.Sync:
+        flags.push()
+        flags.push("-g")
+        break
+      case SyncMode.Asyncify:
         break
     }
   }
