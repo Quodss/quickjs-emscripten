@@ -1252,6 +1252,6 @@ JSValue *QTS_bjson_decode(JSContext *ctx, JSValueConst *data) {
 }
 
 //  Helping functions
-int QTS_sizeof_JSValue() {
+uint32_t QTS_sizeof_JSValue() {
   return sizeof(JSValue);
 }
