@@ -1250,3 +1250,8 @@ JSValue *QTS_bjson_decode(JSContext *ctx, JSValueConst *data) {
   JSValue value = JS_ReadObject(ctx, buffer, length, 0);
   return jsvalue_to_heap(value);
 }
+
+//  Helping functions
+int QTS_sizeof_JSValue() {
+  return sizeof(JSValue);
+}
